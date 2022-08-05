@@ -62,7 +62,9 @@ vector<Point> getPoints()
 		{
 			cout << buffer << '\n';
 			p.x = newUI::getX(buffer);
+
 			p.y = newUI::getY(buffer);
+			cout << "X"<<p.x<<'\n' << "Y"<<p.y<<'\n';
 			points.push_back(p);
 			
 			

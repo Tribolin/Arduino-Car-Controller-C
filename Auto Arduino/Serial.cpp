@@ -8,7 +8,7 @@ namespace Serial
 	DWORD errors_;
 	void init(int baut)
 	{
-
+		
 		serialHandle = CreateFile(_T("COM4"), GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
 		DCB serialParams = { 0 };

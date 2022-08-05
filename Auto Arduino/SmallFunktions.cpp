@@ -6,7 +6,7 @@ namespace newUI
 	{
 		int posx = buffer.find_first_of('X');
 		int posy = buffer.find_first_of('Y');
-		buffer = buffer.substr(0,posy-1);
+		buffer = buffer.substr(0,posy);
 		buffer = buffer.substr(posx +2,buffer.size());
 		cout << buffer;
 		return stoi(buffer);
