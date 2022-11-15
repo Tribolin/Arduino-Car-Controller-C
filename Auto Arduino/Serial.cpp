@@ -4,7 +4,7 @@ using namespace std;
 namespace Serial
 {
 	string COM = "\\\\.\\COM";
-	string num = "";
+	
 	HANDLE serialHandle;
 	COMSTAT status_;
 	DWORD errors_;
@@ -13,18 +13,18 @@ namespace Serial
 		cout << "COM?:\n";
 		cin >> COM;
 		
-		COM += num;
-		cout <<COM<< endl;
-		if(num == "-")
+		
+		
+		if(COM == "-")
 		{
 			COM = "\\\\.\\COM15";
-			cout << "COM 15 OK?";
+			cout << "\nusing COM 15\n";
 		}
 		else if (COM[0] != '\\' )
 		{
 			COM = "\\\\.\\" + COM;
 		}
-		
+		cout<<"Port:" << COM << endl;
 			std::wstring stemp = std::wstring(COM.begin(), COM.end());
 			LPCWSTR sw = stemp.c_str();
 			serialHandle = CreateFile(sw, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -62,7 +62,7 @@ namespace Serial
 			SetCommTimeouts(serialHandle, &timeout);
 
 
-			cout << "Port "<<num<<" offen\n";
+			cout << "Port "<<COM<<" offen\n";
 		}
 	}
 	string readSer()

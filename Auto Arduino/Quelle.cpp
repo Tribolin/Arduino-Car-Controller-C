@@ -120,6 +120,17 @@ int main()
 	cout << "To add a new Point tipe in first x then press enter , then y and press enter.\nTo end use Point(0|0):\n";
 	//Vectrenberechnung für Auto (relative Gradzahlen; Achtung (* -1))
 	getVecs(getPoints(),vecs);
+	// gebe Vectoren auf Konsole aus 
+	cout << "\nVectoren:\n";
+	for (Vec& i : vecs)
+	{
+		cout << "Distance:" << i.distance << " Degree:" << i.degree << "\n";
+	}
+	cout << "\nSending:\n";
+	for (Vec& i : vecs)
+	{
+		cout << "D" << round(i.distance) << "G" << round(i.degree) << "\n";
+	}
 	cout << "\nVectorenberechnung abgeschlossen\nStarte Kommunication\n";
 	Serial :: init(9600);
 	Serial :: Communicate(vecs);
