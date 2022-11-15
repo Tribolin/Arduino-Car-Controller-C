@@ -3,20 +3,31 @@
 using namespace std;
 namespace Serial
 {
-	string COM = "COM";
-	string num = "4";
+	string COM = "\\\\.\\COM";
+	string num = "";
 	HANDLE serialHandle;
 	COMSTAT status_;
 	DWORD errors_;
 	void init(int baut)
 	{
 		cout << "COM?:\n";
-		cin >> num;
+		cin >> COM;
+		
 		COM += num;
-		std::wstring stemp = std::wstring(COM.begin(), COM.end());
-		LPCWSTR sw = stemp.c_str();
-		serialHandle = CreateFile(sw, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-
+		cout <<COM<< endl;
+		if(num == "-")
+		{
+			COM = "\\\\.\\COM15";
+			cout << "COM 15 OK?";
+		}
+		else if (COM[0] != '\\' )
+		{
+			COM = "\\\\.\\" + COM;
+		}
+		
+			std::wstring stemp = std::wstring(COM.begin(), COM.end());
+			LPCWSTR sw = stemp.c_str();
+			serialHandle = CreateFile(sw, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 		DCB serialParams = { 0 };
 		serialParams.DCBlength = sizeof(serialParams);
 
