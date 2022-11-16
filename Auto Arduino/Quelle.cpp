@@ -1,4 +1,3 @@
-
 #include "Header.h"
 using namespace std;
 
@@ -115,7 +114,6 @@ void getVecs(vector<Point> raw,vector<Vec>& vecs)
 
 int main()
 {
-	
 	vector<Vec> vecs;
 	cout << "To add a new Point tipe in first x then press enter , then y and press enter.\nTo end use Point(0|0):\n";
 	//Vectrenberechnung für Auto (relative Gradzahlen; Achtung (* -1))
@@ -134,6 +132,4 @@ int main()
 	cout << "\nVectorenberechnung abgeschlossen\nStarte Kommunication\n";
 	Serial :: init(9600);
 	Serial :: Communicate(vecs);
-	
-	
 }
